@@ -1,10 +1,14 @@
 import framework.Product;
 
-public class MessageBox extends Product {
+public class MessageBox implements Product {
     private char decochar;
 
     public MessageBox(char decochar) {
         this.decochar = decochar;
+    }
+
+    public MessageBox(MessageBox prototype) {
+        this.decochar = prototype.decochar;
     }
 
     @Override
@@ -19,5 +23,10 @@ public class MessageBox extends Product {
             System.out.print(decochar);
         }
         System.out.println();
+    }
+
+    @Override
+    public Product createCopy() {
+        return new MessageBox(this);
     }
 }
